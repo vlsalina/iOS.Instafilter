@@ -12,6 +12,7 @@
 		610DCCF728CFDCD300B0A062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610DCCF628CFDCD300B0A062 /* Assets.xcassets */; };
 		610DCCFA28CFDCD300B0A062 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610DCCF928CFDCD300B0A062 /* Preview Assets.xcassets */; };
 		610DCDB828DC6FC800B0A062 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610DCDB728DC6FC800B0A062 /* ImagePicker.swift */; };
+		610DCDBA28DEF26B00B0A062 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610DCDB928DEF26B00B0A062 /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		610DCCF628CFDCD300B0A062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		610DCCF928CFDCD300B0A062 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		610DCDB728DC6FC800B0A062 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		610DCDB928DEF26B00B0A062 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				610DCCF628CFDCD300B0A062 /* Assets.xcassets */,
 				610DCCF828CFDCD300B0A062 /* Preview Content */,
 				610DCDB728DC6FC800B0A062 /* ImagePicker.swift */,
+				610DCDB928DEF26B00B0A062 /* ImageSaver.swift */,
 			);
 			path = Instafilter;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				610DCDB828DC6FC800B0A062 /* ImagePicker.swift in Sources */,
 				610DCCF528CFDCD100B0A062 /* ContentView.swift in Sources */,
 				610DCCF328CFDCD100B0A062 /* InstafilterApp.swift in Sources */,
+				610DCDBA28DEF26B00B0A062 /* ImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +278,7 @@
 				DEVELOPMENT_TEAM = G5MA7JP2RR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow images to be saved to Photos library?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -303,6 +308,7 @@
 				DEVELOPMENT_TEAM = G5MA7JP2RR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow images to be saved to Photos library?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
