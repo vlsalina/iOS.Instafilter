@@ -85,33 +85,47 @@ struct ContentView: View {
                     }
                     .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
                         // dialog here
-                        Button("Crystallize") {
-                            setFilter(CIFilter.crystallize())
-                            toDisable()
-                        }
-                        Button("Edges") {
-                            setFilter(CIFilter.edges())
-                            toDisable()
-                        }
-                        Button("Gaussian Blur") {
-                            setFilter(CIFilter.gaussianBlur())
-                            toDisable()
-                        }
-                        Button("Pixellate") {
-                            setFilter(CIFilter.pixellate())
-                            toDisable()
-                        }
-                        Button("Sepia Tone") {
-                            setFilter(CIFilter.sepiaTone())
-                            toDisable()
-                        }
-                        Button("Unsharp Mask") {
-                            setFilter(CIFilter.unsharpMask())
-                            toDisable()
-                        }
-                        Button("Vignette") {
-                            setFilter(CIFilter.vignette())
-                            toDisable()
+                        Group {
+                            Button("Crystallize") {
+                                setFilter(CIFilter.crystallize())
+                                toDisable()
+                            }
+                            Button("Edges") {
+                                setFilter(CIFilter.edges())
+                                toDisable()
+                            }
+                            Button("Gaussian Blur") {
+                                setFilter(CIFilter.gaussianBlur())
+                                toDisable()
+                            }
+                            Button("Pixellate") {
+                                setFilter(CIFilter.pixellate())
+                                toDisable()
+                            }
+                            Button("Sepia Tone") {
+                                setFilter(CIFilter.sepiaTone())
+                                toDisable()
+                            }
+                            Button("Unsharp Mask") {
+                                setFilter(CIFilter.unsharpMask())
+                                toDisable()
+                            }
+                            Button("Vignette") {
+                                setFilter(CIFilter.vignette())
+                                toDisable()
+                            }
+                            Button("Pointillize") {
+                                setFilter(CIFilter.pointillize())
+                                toDisable()
+                            }
+                            Button("Circular Wrap") {
+                                setFilter(CIFilter.circularWrap())
+                                toDisable()
+                            }
+                            Button("Photo Effect Instant") {
+                                setFilter(CIFilter.photoEffectInstant())
+                                toDisable()
+                            }
                         }
                         Button("Cancel", role: .cancel) { }
                     }
