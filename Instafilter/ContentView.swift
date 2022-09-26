@@ -75,6 +75,7 @@ struct ContentView: View {
                         // save the picture
                         Text("Save")
                     }
+                    .disabled((image != nil) ? false : true)
                 }
             }
             .padding([.horizontal, .bottom])
