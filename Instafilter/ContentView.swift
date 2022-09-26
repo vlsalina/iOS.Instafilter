@@ -13,10 +13,17 @@ struct ContentView: View {
     @State private var image: Image?
     @State private var inputImage: UIImage?
     @State private var filterIntensity = 0.5
+    @State private var radiusIntensity = 0.5
+    @State private var scaleIntensity = 0.5
     @State private var showingImagePicker = false
     @State private var showingFilterSheet = false
     @State private var processedImage: UIImage?
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
+    
+    @State private var intensityFlag = true
+    @State private var radiusFlag = false
+    @State private var scaleFlag = false
+    
     let context = CIContext()
     
     var body: some View {
@@ -42,12 +49,33 @@ struct ContentView: View {
                 HStack {
                     Text("Intensity")
                     Slider(value: $filterIntensity)
+                        .disabled(!intensityFlag)
                         .onChange(of: filterIntensity) { _ in
                             applyProcessing()
                         }
-                    
                 }
                 .padding(.vertical)
+                
+                HStack {
+                    Text("Radius   ")
+                    Slider(value: $radiusIntensity)
+                        .disabled(!radiusFlag)
+                        .onChange(of: radiusIntensity) { _ in
+                            applyProcessing()
+                        }
+                }
+                .padding(.bottom)
+                
+                HStack {
+                    Text("Scale     ")
+                    Slider(value: $scaleIntensity)
+                        .disabled(!scaleFlag)
+                        .onChange(of: scaleIntensity) { _ in
+                            applyProcessing()
+                        }
+                }
+                .padding(.bottom)
+                
                 
                 HStack {
                     Button("Change Filter") {
@@ -57,13 +85,34 @@ struct ContentView: View {
                     }
                     .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
                         // dialog here
-                        Button("Crystallize") { setFilter(CIFilter.crystallize()) }
-                        Button("Edges") { setFilter(CIFilter.edges()) }
-                        Button("Gaussian Blur") { setFilter(CIFilter.gaussianBlur()) }
-                        Button("Pixellate") { setFilter(CIFilter.pixellate()) }
-                        Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
-                        Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
-                        Button("Vignette") { setFilter(CIFilter.vignette()) }
+                        Button("Crystallize") {
+                            setFilter(CIFilter.crystallize())
+                            toDisable()
+                        }
+                        Button("Edges") {
+                            setFilter(CIFilter.edges())
+                            toDisable()
+                        }
+                        Button("Gaussian Blur") {
+                            setFilter(CIFilter.gaussianBlur())
+                            toDisable()
+                        }
+                        Button("Pixellate") {
+                            setFilter(CIFilter.pixellate())
+                            toDisable()
+                        }
+                        Button("Sepia Tone") {
+                            setFilter(CIFilter.sepiaTone())
+                            toDisable()
+                        }
+                        Button("Unsharp Mask") {
+                            setFilter(CIFilter.unsharpMask())
+                            toDisable()
+                        }
+                        Button("Vignette") {
+                            setFilter(CIFilter.vignette())
+                            toDisable()
+                        }
                         Button("Cancel", role: .cancel) { }
                     }
                     
@@ -111,12 +160,32 @@ struct ContentView: View {
         imageSaver.writeToPhotoAlbum(image: processedImage)
     }
     
+    func toDisable() {
+        let inputKeys = currentFilter.inputKeys
+        
+        if inputKeys.contains(kCIInputIntensityKey) {
+            intensityFlag = true
+            radiusFlag = false
+            scaleFlag = false
+        }
+        if inputKeys.contains(kCIInputRadiusKey) {
+            intensityFlag = false
+            radiusFlag = true
+            scaleFlag = false
+        }
+        if inputKeys.contains(kCIInputScaleKey) {
+            intensityFlag = false
+            radiusFlag = false
+            scaleFlag = true
+        }
+    }
+    
     func applyProcessing() {
         let inputKeys = currentFilter.inputKeys
         
         if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
-        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
+        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(radiusIntensity * 200, forKey: kCIInputRadiusKey) }
+        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(scaleIntensity * 10, forKey: kCIInputScaleKey) }
         
         guard let outputImage = currentFilter.outputImage else { return }
         
